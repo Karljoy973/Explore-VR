@@ -62,3 +62,5 @@ omnisharp.json
 Assembly-CSharp-Editor.csproj
 
 Assembly-CSharp.csproj
+
+UserSettings/
