@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class RaycastPC : MonoBehaviour {
 
@@ -42,7 +42,8 @@ public class RaycastPC : MonoBehaviour {
 
                 // display outline effect
                 if (!outlineObject) {
-                    hitObject.AddComponent<Outline>();
+                    var newComponent = hitObject.AddComponent<Outline>();
+                    newComponent.OutlineWidth = 10;
                     outlineObject = hitObject;
                 } else if (outlineObject != hitObject) {
                     Destroy(outlineObject.GetComponent<Outline>());
