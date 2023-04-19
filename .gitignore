@@ -56,3 +56,9 @@ crashlytics-build.properties
 
 # Thomas
 omnisharp.json
+
+.vsconfig
+
+Assembly-CSharp-Editor.csproj
+
+Assembly-CSharp.csproj
