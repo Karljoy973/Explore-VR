@@ -2,14 +2,13 @@
 
 public class RaycastPC : MonoBehaviour {
 
+    [SerializeField] private LineRenderer Line;
     [SerializeField] private float MaxDistance = 100f;
 
-    private LineRenderer _line;
     private Camera _camera;
 
     private void Start() {
-        _line = gameObject.AddComponent<LineRenderer>();
-        _line.startWidth = _line.endWidth = 0.1f;
+        Line.startWidth = Line.endWidth = 0.1f;
         _camera = Camera.main;
     }
 
@@ -17,7 +16,7 @@ public class RaycastPC : MonoBehaviour {
         if (Input.GetMouseButton(0))
             UpdateLaser();
         else
-            _line.enabled = false;
+            Line.enabled = false;
     }
 
     private void UpdateLaser() {
@@ -42,9 +41,9 @@ public class RaycastPC : MonoBehaviour {
         }
         
         // draw laser
-        _line.SetPosition(0, origin);
-        _line.SetPosition(1, target);
-        _line.enabled = true;
+        Line.SetPosition(0, origin);
+        Line.SetPosition(1, target);
+        Line.enabled = true;
     }
 
 }
