@@ -2,8 +2,8 @@
 
 public class InteractableObject : MonoBehaviour {
 
+    public virtual bool CanInteract() => true;
     public virtual void OnInteract() {
-        Debug.Log("Interacted with " + gameObject.name);
     }
 
 }

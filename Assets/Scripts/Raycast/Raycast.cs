@@ -28,8 +28,7 @@ public class Raycast : MonoBehaviour {
             var hitObject = hit.collider.gameObject;
             var interactable = hitObject.GetComponentInParent<InteractableObject>();
 
-            // when am interactable object is hovered
-            if (interactable) {
+            if (interactable && interactable.CanInteract()) {  // looking at an interactable object
 
                 // display outline effect
                 if (!outlineObject) {
