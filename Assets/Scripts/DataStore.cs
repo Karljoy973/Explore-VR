@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DataStore : MonoBehaviour {
@@ -16,5 +17,8 @@ public class DataStore : MonoBehaviour {
             // TODO : update selected image on door ?
         }
     }
+
+    public List<byte[]> Pictures { get; } = new();
+    public int PictureIndex = 0;
 
 }

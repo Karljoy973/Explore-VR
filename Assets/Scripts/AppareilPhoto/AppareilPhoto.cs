@@ -1,9 +1,12 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class AppareilPhoto : InteractableObject {
+
+    public static AppareilPhoto instance;
 
     [Header("Player")]
     [SerializeField] private FirstPersonController Player;
@@ -15,20 +18,22 @@ public class AppareilPhoto : InteractableObject {
     
     [Header("UI and Camera Live Feed")]
     [SerializeField] private Image UIDot;
-    [SerializeField] private TMP_Text TextInteractTogglePictureMode;
+    [SerializeField] public TMP_Text TextInteractTogglePictureMode;
     [SerializeField] private TMP_Text TextInteractTakePicture;
     [SerializeField] private TMP_Text TextControls;
     [SerializeField] private RawImage CameraLiveFeedTarget;
     [SerializeField] private float CameraLiveFeedResolution = 500f;
 
-    public Vector3 InitialPosition;
-    public Quaternion InitialRotation;
+    [NonSerialized] public Vector3 InitialPosition;
+    [NonSerialized] public Quaternion InitialRotation;
     
     private string _textInteractTogglePictureModeContents;
     private string _textInteractTakePictureContents;
     private string _textControlsContents;
     
     private void Start() {
+        instance = this;
+        
         InitialPosition = transform.position;
         InitialRotation = transform.rotation;
         
@@ -81,9 +86,37 @@ public class AppareilPhoto : InteractableObject {
                 TextControls.text = _textControlsContents;
             }
         }
-        // take picture
-        else if (Input.GetKeyDown(KeyCode.Space)) {
-            // TODO : save image from camera
+        // take picture in picture mode
+        else if (DataStore.instance.PictureMode && Input.GetKeyDown(KeyCode.Space)) {
+            
+            // disable UI texts
+            TextInteractTakePicture.text = "";
+            TextControls.text = "";
+            TextInteractTogglePictureMode.text = "";
+            
+            // render camera in new texture once and save screenshot
+            var renderTexture = new RenderTexture(Screen.width, Screen.height, 24);
+            AppareilPhotoCamera.targetTexture = renderTexture;
+            AppareilPhotoCamera.Render();
+            
+            var screenshot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+            RenderTexture.active = renderTexture;
+            screenshot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+            screenshot.Apply();
+            
+            // save screenshot and show on displayer
+            DataStore.instance.Pictures.Add(screenshot.EncodeToPNG());
+            DataStore.instance.PictureIndex = DataStore.instance.Pictures.Count - 1;
+            PictureDisplayer.instance.ShowSelectedPicture();
+
+            // put camera back
+            AppareilPhotoCamera.targetTexture = null;
+            
+            // put UI back
+            TextInteractTakePicture.text = _textInteractTakePictureContents;
+            TextInteractTogglePictureMode.text = _textInteractTogglePictureModeContents;
+            
+            // TODO : play picture sound here
         }
     }
 

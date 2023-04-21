@@ -4,6 +4,7 @@ using UnityEngine;
 public class Raycast : MonoBehaviour {
 
     [SerializeField] private float MaxDistance = 100f;
+    [SerializeField] private LayerMask Mask;
     [SerializeField] private TMP_Text TextInteractHint;
 
     private Camera _camera;
@@ -29,10 +30,12 @@ public class Raycast : MonoBehaviour {
 
         var dir = (target - origin).normalized;
 
-        if (Physics.Raycast(origin, dir, out var hit, MaxDistance)) {
+        if (Physics.Raycast(origin, dir, out var hit, MaxDistance, Mask)) {
             
             var hitObject = hit.collider.gameObject;
             var interactable = hitObject.GetComponentInParent<InteractableObject>();
+            
+            Debug.Log("hit " + hitObject.name);
 
             if (interactable && interactable.CanInteract()) {  // looking at an interactable object
 

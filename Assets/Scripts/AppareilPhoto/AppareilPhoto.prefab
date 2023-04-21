@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 3486382570027373212}
   - component: {fileID: 399198923260893879}
   m_Layer: 0
-  m_Name: Appareil photo
+  m_Name: AppareilPhoto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,11 +12,11 @@ public class RoomTeleporter : InteractableObject {
         Player.enabled = true;
         
         if (DataStore.instance.PickedUpAppareilPhoto) {
-            var appareilPhoto = FindObjectOfType<AppareilPhoto>();
-            appareilPhoto.transform.parent = null;
-            appareilPhoto.transform.SetPositionAndRotation(appareilPhoto.InitialPosition, appareilPhoto.InitialRotation);
+            AppareilPhoto.instance.transform.parent = null;
+            AppareilPhoto.instance.transform.SetPositionAndRotation(AppareilPhoto.instance.InitialPosition, AppareilPhoto.instance.InitialRotation);
 
             DataStore.instance.PickedUpAppareilPhoto = false;
+            AppareilPhoto.instance.TextInteractTogglePictureMode.text = "";
         }
     }
     
