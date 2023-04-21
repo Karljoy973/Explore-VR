@@ -1,16 +1,13 @@
 using UnityEngine;
 
-public class RaycastPC : MonoBehaviour {
+public class Raycast : MonoBehaviour {
 
-    [SerializeField] private LineRenderer Line;
     [SerializeField] private float MaxDistance = 100f;
 
     private GameObject outlineObject = null;
-
     private Camera _camera;
 
     private void Start() {
-        Line.startWidth = Line.endWidth = 0.1f;
         _camera = Camera.main;
     }
 
@@ -27,15 +24,9 @@ public class RaycastPC : MonoBehaviour {
         var dir = (target - origin).normalized;
 
         if (Physics.Raycast(origin, dir, out var hit, MaxDistance)) {
-
-            target = hit.point;
+            
             var hitObject = hit.collider.gameObject;
             var interactable = hitObject.GetComponentInParent<InteractableObject>();
-
-            if (Input.GetMouseButton(0))
-                UpdateLaser(origin, target);
-            else
-                Line.enabled = false;
 
             // when am interactable object is hovered
             if (interactable) {
@@ -54,13 +45,10 @@ public class RaycastPC : MonoBehaviour {
                 // when the object is clicked
                 if (Input.GetMouseButtonDown(0))
                     interactable.OnInteract();
-            } else {
+            } else
                 StopOutline();
-            }
-        } else {
+        } else
             StopOutline();
-            Line.enabled = false;
-        }
     }
 
     private void StopOutline() {
@@ -68,14 +56,6 @@ public class RaycastPC : MonoBehaviour {
             Destroy(outlineObject.GetComponent<Outline>());
             outlineObject = null;
         }
-    }
-
-    private void UpdateLaser(Vector3 origin, Vector3 target) {
-
-        // draw laser
-        Line.SetPosition(0, origin);
-        Line.SetPosition(1, target);
-        Line.enabled = true;
     }
 
 }
