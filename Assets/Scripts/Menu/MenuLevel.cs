@@ -6,7 +6,7 @@ public class MenuLevel : InteractableObject {
     [SerializeField] public Vector3 TeleportRotation;
     
     public override void OnInteract() {
-        Menu.instance.SelectedLevel = this;
+        DataStore.instance.SelectedLevel = this;
     }
     
 }
