@@ -5,14 +5,8 @@ public class DataStore : MonoBehaviour {
     public static DataStore instance;
     public void Start() => instance = this;
 
-    private bool _pickedUpAppareilPhoto;
-    public bool PickedUpAppareilPhoto {
-        get => _pickedUpAppareilPhoto;
-        set {
-            _pickedUpAppareilPhoto = value;
-            // TODO : put camera in inventory
-        }
-    }
+    public bool PickedUpAppareilPhoto { get; set; }
+    public bool PictureMode { get; set; }
 
     private MenuLevel _selectedLevel;
     public MenuLevel SelectedLevel {
