@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
@@ -14,9 +16,43 @@ public class AppareilPhoto : InteractableObject {
     
     [Header("UI and Camera Live Feed")]
     [SerializeField] private Image UIDot;
+    [SerializeField] private TMP_Text TextInteractTogglePictureMode;
+    [SerializeField] private TMP_Text TextInteractTakePicture;
+    [SerializeField] private TMP_Text TextControls;
     [SerializeField] private RawImage CameraLiveFeedTarget;
     [SerializeField] private float CameraLiveFeedResolution = 500f;
+
+    private string _textInteractTogglePictureModeContents;
+    private string _textInteractTakePictureContents;
+    private string _textControlsContents;
     
+    private void Start() {
+        _textInteractTogglePictureModeContents = TextInteractTogglePictureMode.text;
+        TextInteractTogglePictureMode.text = "";
+        
+        _textInteractTakePictureContents = TextInteractTakePicture.text;
+        TextInteractTakePicture.text = "";
+        
+        _textControlsContents = TextControls.text;
+    }
+
+    public override void OnInteract() {  // on interact, pick up camera
+        // teleport so player carries it
+        DataStore.instance.PickedUpAppareilPhoto = true;
+        transform.parent = CameraCarryPointParent;
+        transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+
+        // enable livestream to camera object
+        EnableLiveStreamToCameraScreen();
+        
+        // show UI
+        TextInteractTogglePictureMode.text = _textInteractTogglePictureModeContents;
+    }
+
+    public override bool CanInteract() {  // disallow raycast interaction if the camera has already been picked up
+        return !DataStore.instance.PickedUpAppareilPhoto;
+    }
+
     private void Update() {
         if (!DataStore.instance.PickedUpAppareilPhoto)
             return;
@@ -30,14 +66,17 @@ public class AppareilPhoto : InteractableObject {
             PlayerCamera.depth = pictureMode ? 0 : 1;  // depth 1 = set as main camera
             AppareilPhotoCamera.depth = pictureMode ? 1 : 0;  // depth 1 = set as main camera
             UIDot.enabled = !pictureMode;
-
+            
             if (pictureMode) {
-                AppareilPhotoCamera.transform.localRotation = PlayerCamera.transform.localRotation;
-                AppareilPhotoCamera.targetTexture = null;
+                AppareilPhotoCamera.targetTexture = null;  // disable livestream to camera object
+                TextInteractTakePicture.text = _textInteractTakePictureContents;
+                TextControls.text = "";
             }
-            // disable picture mode : enable live stream of appareil photo to object screen in-game
-            else
-                EnableLiveStreamToCameraScreen();
+            else {
+                EnableLiveStreamToCameraScreen();  // enable livestream to camera object
+                TextInteractTakePicture.text = "";
+                TextControls.text = _textControlsContents;
+            }
         }
         // take picture
         else if (Input.GetKeyDown(KeyCode.Space)) {
@@ -51,19 +90,5 @@ public class AppareilPhoto : InteractableObject {
         AppareilPhotoCamera.targetTexture = renderTexture;
         CameraLiveFeedTarget.texture = renderTexture;
     }
-
-    // on interact, pick up camera
-    public override void OnInteract() {
-        // teleport so player carries it
-        DataStore.instance.PickedUpAppareilPhoto = true;
-        transform.parent = CameraCarryPointParent;
-        transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-
-        // enable livestream to camera object
-        EnableLiveStreamToCameraScreen();
-    }
-
-    // disallow raycast interaction if the camera has already been picked up
-    public override bool CanInteract() => !DataStore.instance.PickedUpAppareilPhoto;
 
 }

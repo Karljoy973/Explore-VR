@@ -1,14 +1,20 @@
+using TMPro;
 using UnityEngine;
 
 public class Raycast : MonoBehaviour {
 
     [SerializeField] private float MaxDistance = 100f;
+    [SerializeField] private TMP_Text TextInteractHint;
 
-    private GameObject outlineObject = null;
     private Camera _camera;
+    private string _textInteractHintContents;
+    private GameObject outlineObject = null;
 
     private void Start() {
         _camera = Camera.main;
+
+        _textInteractHintContents = TextInteractHint.text;
+        TextInteractHint.text = "";
     }
 
     private void Update() {
@@ -30,6 +36,9 @@ public class Raycast : MonoBehaviour {
 
             if (interactable && interactable.CanInteract()) {  // looking at an interactable object
 
+                // show interact hint
+                TextInteractHint.text = _textInteractHintContents;
+
                 // display outline effect
                 if (!outlineObject) {
                     var newComponent = hitObject.AddComponent<Outline>();
@@ -44,10 +53,16 @@ public class Raycast : MonoBehaviour {
                 // when the object is clicked
                 if (Input.GetMouseButtonDown(0))
                     interactable.OnInteract();
-            } else
+            }
+            else {
+                TextInteractHint.text = "";
                 StopOutline();
-        } else
+            }
+        }
+        else {
+            TextInteractHint.text = "";
             StopOutline();
+        }
     }
 
     private void StopOutline() {
