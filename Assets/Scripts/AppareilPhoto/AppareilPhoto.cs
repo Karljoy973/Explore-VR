@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,18 +21,22 @@ public class AppareilPhoto : InteractableObject {
     [SerializeField] private RawImage CameraLiveFeedTarget;
     [SerializeField] private float CameraLiveFeedResolution = 500f;
 
+    public Vector3 InitialPosition;
+    public Quaternion InitialRotation;
+    
     private string _textInteractTogglePictureModeContents;
     private string _textInteractTakePictureContents;
     private string _textControlsContents;
     
     private void Start() {
+        InitialPosition = transform.position;
+        InitialRotation = transform.rotation;
+        
         _textInteractTogglePictureModeContents = TextInteractTogglePictureMode.text;
-        TextInteractTogglePictureMode.text = "";
-        
         _textInteractTakePictureContents = TextInteractTakePicture.text;
-        TextInteractTakePicture.text = "";
-        
         _textControlsContents = TextControls.text;
+        TextInteractTogglePictureMode.text = "";
+        TextInteractTakePicture.text = "";
     }
 
     public override void OnInteract() {  // on interact, pick up camera
@@ -50,7 +53,7 @@ public class AppareilPhoto : InteractableObject {
     }
 
     public override bool CanInteract() {  // disallow raycast interaction if the camera has already been picked up
-        return !DataStore.instance.PickedUpAppareilPhoto;
+        return base.CanInteract() && !DataStore.instance.PickedUpAppareilPhoto;
     }
 
     private void Update() {
