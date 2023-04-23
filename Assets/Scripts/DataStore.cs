@@ -13,5 +13,7 @@ public class DataStore : MonoBehaviour {
 
     public List<byte[]> Pictures { get; } = new();
     public int PictureIndex = 0;
+    
+    public PopupSelector SelectedPopup { get; set; }
 
 }
