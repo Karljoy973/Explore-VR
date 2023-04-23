@@ -5527,6 +5527,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 2008747539}
+  MuseumLevelIndex: 0
+  MuseumTeleportPosition: {x: 0, y: 0, z: 0}
+  MuseumTeleportRotation: {x: 0, y: 0, z: 0, w: 0}
+  WrongLevelSound: {fileID: 0}
 --- !u!1001 &2008747532
 PrefabInstance:
   m_ObjectHideFlags: 0

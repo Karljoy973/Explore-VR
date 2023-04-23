@@ -42,12 +42,14 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\DataStore.cs" />
      <Compile Include="Assets\Libs\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
+     <Compile Include="Assets\Scripts\Popup\PopupDisplayer.cs" />
      <Compile Include="Assets\Scripts\Raycast\Raycast.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Utility\FOVKick.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Cameras\Scripts\LookatTarget.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonUserControl.cs" />
      <Compile Include="Assets\ClockAnimator.cs" />
      <Compile Include="Assets\Libs\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
+     <Compile Include="Assets\Scripts\Menu\MenuSelector.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Utility\AutoMoveAndRotate.cs" />
      <Compile Include="Assets\Scripts\AppareilPhoto\PictureSelectorPrevious.cs" />
@@ -72,6 +74,7 @@
      <Compile Include="Assets\Libs\Standard Assets\Utility\ActivateTrigger.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneUserControl4Axis.cs" />
      <Compile Include="Assets\Libs\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs" />
+     <Compile Include="Assets\Scripts\Popup\PopupSelector.cs" />
      <Compile Include="Assets\Libs\Standard Assets\2D\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Characters\RollerBall\Scripts\BallUserControl.cs" />
      <Compile Include="Assets\Libs\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
@@ -87,7 +90,6 @@
      <Compile Include="Assets\Libs\Standard Assets\ParticleSystems\Scripts\ParticleSystemMultiplier.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Vehicles\Car\Scripts\CarUserControl.cs" />
      <Compile Include="Assets\Scripts\AppareilPhoto\PictureDisplayer.cs" />
-     <Compile Include="Assets\Scripts\Menu\MenuLevel.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Utility\CurveControlledBob.cs" />
      <Compile Include="Assets\Libs\Standard Assets\2D\Scripts\Restarter.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Utility\FollowTarget.cs" />
@@ -138,7 +140,6 @@
      <Compile Include="Assets\Libs\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneControlSurfaceAnimator.cs" />
      <Compile Include="Assets\Libs\QuickOutline\Scripts\Outline.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneAiControl.cs" />
-     <Compile Include="Assets\Scripts\Menu\ChangeMaterialOnClick.cs" />
      <Compile Include="Assets\Scripts\Raycast\InteractableObject.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Cameras\Scripts\TargetFieldOfView.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Utility\LerpControlledBob.cs" />
@@ -153,6 +154,7 @@
      <None Include="Assets\Libs\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Libs\Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
      <None Include="Assets\Libs\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
+     <None Include="Assets\Libs\Showroom\Documentation\Read me.txt" />
      <None Include="Assets\Libs\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\Libs\Standard Assets\Effects\Projectors\Guidelines.txt" />
      <None Include="Assets\Libs\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
