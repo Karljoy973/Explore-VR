@@ -4,7 +4,7 @@ public class RoomTeleporter : InteractableObject {
 
     [SerializeField] private CharacterController Player;
     [SerializeField] public Vector3 TeleportPosition;
-    [SerializeField] public Vector3 TeleportRotation;
+    [SerializeField] public Quaternion TeleportRotation;
     [SerializeField] private AudioClip TeleportSound;
     
     private AudioSource _audioSource;
@@ -15,7 +15,7 @@ public class RoomTeleporter : InteractableObject {
 
     public override void OnInteract() {
         Player.enabled = false;
-        Player.transform.SetPositionAndRotation(TeleportPosition, Quaternion.Euler(TeleportRotation));
+        Player.transform.SetPositionAndRotation(TeleportPosition, TeleportRotation);
         Player.enabled = true;
         
         _audioSource.clip = TeleportSound;
