@@ -9,14 +9,7 @@ public class DataStore : MonoBehaviour {
     public bool PickedUpAppareilPhoto { get; set; }
     public bool PictureMode { get; set; }
 
-    private MenuLevel _selectedLevel;
-    public MenuLevel SelectedLevel {
-        get => _selectedLevel;
-        set {
-            _selectedLevel = value;
-            // TODO : update selected image on door ?
-        }
-    }
+    public int LevelIndex { get; set; } = 0;
 
     public List<byte[]> Pictures { get; } = new();
     public int PictureIndex = 0;
