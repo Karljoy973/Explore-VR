@@ -801,6 +801,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6409337489924828799, guid: f802640d48b7d46fa96df2993c053842, type: 3}
       insertIndex: -1
       addedObject: {fileID: 198270546}
+    - targetCorrespondingSourceObject: {fileID: 6409337489924828799, guid: f802640d48b7d46fa96df2993c053842, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 198270547}
   m_SourcePrefab: {fileID: 100100000, guid: f802640d48b7d46fa96df2993c053842, type: 3}
 --- !u!4 &198270543 stripped
 Transform:
@@ -832,6 +835,103 @@ MonoBehaviour:
   Player: {fileID: 2008747539}
   TeleportPosition: {x: -5.25, y: 0.915, z: -10.25}
   TeleportRotation: {x: 0, y: 180, z: 0}
+  TeleportSound: {fileID: 8300000, guid: 62a61e4ef5c20fb43aa2fe79e50c81a2, type: 3}
+--- !u!82 &198270547
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198270545}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &202223722
 GameObject:
   m_ObjectHideFlags: 0
@@ -3066,6 +3166,7 @@ MonoBehaviour:
   MuseumLevelIndex: 3
   MuseumTeleportPosition: {x: 19.25, y: 0.915, z: -19.07}
   MuseumTeleportRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
+  CorrectLevelSound: {fileID: 8300000, guid: 62a61e4ef5c20fb43aa2fe79e50c81a2, type: 3}
   WrongLevelSound: {fileID: 8300000, guid: d64b06bebb331ca4384633a0daa48416, type: 3}
 --- !u!82 &1999817255
 AudioSource:

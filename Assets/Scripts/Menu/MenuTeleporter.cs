@@ -6,13 +6,13 @@ public class MenuTeleporter : InteractableObject {
     [SerializeField] private int MuseumLevelIndex;
     [SerializeField] private Vector3 MuseumTeleportPosition;
     [SerializeField] private Quaternion MuseumTeleportRotation;
+    [SerializeField] private AudioClip CorrectLevelSound;
     [SerializeField] private AudioClip WrongLevelSound;
     
     private AudioSource _audioSource;
 
     private void Start() {
         _audioSource = GetComponent<AudioSource>();
-        _audioSource.clip = WrongLevelSound;
     }
 
     public override void OnInteract() {
@@ -20,8 +20,10 @@ public class MenuTeleporter : InteractableObject {
             Player.enabled = false;
             Player.transform.SetPositionAndRotation(MuseumTeleportPosition, MuseumTeleportRotation);
             Player.enabled = true;
+            _audioSource.clip = CorrectLevelSound;
         } else
-            _audioSource.Play();
+            _audioSource.clip = WrongLevelSound;
+        _audioSource.Play();
     }
     
 }
