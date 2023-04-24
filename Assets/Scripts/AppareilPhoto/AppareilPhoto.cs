@@ -55,7 +55,7 @@ public class AppareilPhoto : InteractableObject {
 
 
     public override void OnInteract() {  // on interact, pick up camera
-                                         // teleport so player carries it
+        // teleport so player carries it
         DataStore.instance.PickedUpAppareilPhoto = true;
         transform.parent = CameraCarryPointParent;
         transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);

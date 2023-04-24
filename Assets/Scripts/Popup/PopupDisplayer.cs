@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PopupDisplayer : MonoBehaviour {
 
@@ -8,26 +9,31 @@ public class PopupDisplayer : MonoBehaviour {
     public void Start() => instance = this;
 
     [SerializeField] private Image PopupImage;
+    [SerializeField] private FirstPersonController Player;
 
-    private DateTime _lastPopupTime;
+    public DateTime LastPopupUpdate;
 
-    public void ShowCurrentPopup() {
+    public void UpdatePopup() {
         if (DataStore.instance.SelectedPopup == null) {
             PopupImage.enabled = false;
-        } else {
+            Player.enabled = true;
+        }
+        else {
             var texture = DataStore.instance.SelectedPopup.PopupTexture2D;
             var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
             PopupImage.sprite = sprite;
             PopupImage.enabled = true;
-            _lastPopupTime = DateTime.Now;
+            Player.enabled = false;
         }
+        
+        LastPopupUpdate = DateTime.Now;
     }
 
     private void Update() {
         if (DataStore.instance.SelectedPopup != null && Input.GetMouseButtonDown(0)) {
-            if (DateTime.Now - _lastPopupTime >= TimeSpan.FromSeconds(0.33f)) {
+            if (DateTime.Now - LastPopupUpdate >= TimeSpan.FromSeconds(0.25f)) {
                 DataStore.instance.SelectedPopup = null;
-                ShowCurrentPopup();
+                UpdatePopup();
             }
         }
     }
