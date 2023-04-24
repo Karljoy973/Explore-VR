@@ -48,6 +48,9 @@ public class AppareilPhoto : InteractableObject {
 
         _audioSource = GetComponent<AudioSource>();
         _audioSource.clip = pictureSound;
+        
+        PlayerCamera.depth = 1;  // depth 1 = set as main camera
+        AppareilPhotoCamera.depth = 0;
     }
 
 
