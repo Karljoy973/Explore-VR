@@ -66,3 +66,9 @@ Assembly-CSharp.csproj
 
 UserSettings/
 Assets/Showroom/
+
+Assets/Showroom.meta
+
+Assets/Libs/Showroom/
+
+Assets/Libs/Real Materials/
