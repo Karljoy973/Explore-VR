@@ -60,21 +60,18 @@ omnisharp.json
 
 .vsconfig
 
+# Unity user settings
 Assembly-CSharp-Editor.csproj
-
 Assembly-CSharp.csproj
-
 UserSettings/
-Assets/Showroom/
 
+# lib musée
+Assets/Showroom/
 Assets/Showroom.meta
 
-Assets/Libs/Showroom/
-
 Assets/Libs/Real Materials/
-
-Assets/EckTechGames/
-
-Assets/EckTechGames.meta
-
 Assets/Libs/Real Materials.meta
+
+# auto save
+Assets/EckTechGames/
+Assets/EckTechGames.meta
