@@ -140,6 +140,7 @@
      <Compile Include="Assets\Libs\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneControlSurfaceAnimator.cs" />
      <Compile Include="Assets\Libs\QuickOutline\Scripts\Outline.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneAiControl.cs" />
+     <Compile Include="Assets\Scripts\Menu\ChangeMaterialOnClick.cs" />
      <Compile Include="Assets\Scripts\Raycast\InteractableObject.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Cameras\Scripts\TargetFieldOfView.cs" />
      <Compile Include="Assets\Libs\Standard Assets\Utility\LerpControlledBob.cs" />
